@@ -101,3 +101,61 @@
 
 
 
+//day 3
+// HTTP Module, Creating a Server, and Routing (No Express Yet!)
+
+// const http = require('http')
+// const server = http.createServer((req, res) => {
+//     res.end("Assalamualaikum World")
+// })
+
+// server.listen(3000, () => {
+//     console.log("server is open on the port 3000")
+// })
+
+
+//add a basic routing
+// const http = require('http')
+// const server = http.createServer((req, res) => {
+//     if(req.url === "/" && req.method === "GET" ){
+//         res.writeHead(200, {"content-Type": "text/plain"}
+           
+//         )
+//         res.end("Home page")
+//     }else if(req.url === "/about" && req.method === "GET"){
+//         res.writeHead(200, {"content-type": "text/plain"})
+//         res.end("about page")
+//     }else{
+//         res.writeHead(404, {"content-type" : "text/plain"})
+//         res.end("404 error")
+//     }
+// })
+
+// server.listen(3000, ()=> {
+//     console.log("server is on")
+// })
+
+//serve fs with html 
+const fs = require('fs')
+const http = require('http')
+const server = http.createServer((req, res) => {
+    if (req.url === "/") {
+        fs.readFile("home.html" , (err, data) => {
+            if(err){
+                res.writeHead(500)
+                res.end("server error")
+            }else{
+                res.writeHead(200, {"content-type" : "text/html"});
+                res.end(data)
+            }
+        })
+        
+    }else{
+        res.writeHead(404)
+        res.end('404 error')
+    }
+} )
+
+server.listen(3000, ()=>{
+    console.log("Server running at http://localhost:3000")
+})
