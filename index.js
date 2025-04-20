@@ -44,3 +44,60 @@
 
 // const fullPath = path.join(__dirname, 'folder', "file.txt")
 // console.log(fullPath)
+
+//os module
+//give data about operating system
+// const os = require('os')
+
+// console.log(os.platform())
+// console.log(os.arch())
+
+// console.log(os.totalmem())
+// console.log(os.freemem())
+
+// console.log(os.homedir())
+// console.log(os.hostname())
+
+// //EventEmitter
+// const EventEmitter = require('events')
+// const emmiter = new EventEmitter()
+
+// // emmiter.on('greet', (name)=>{
+// //     console.log(`HELLO ${name}`)
+// // })
+// // emmiter.emit("greet", "smn")
+
+// //custom event
+// emmiter.on("orderPlaced", (order) => {
+//     console.log(`order receiv3ed ${order}`)
+// })
+// emmiter.emit("orderPlaced" , {id: 1, item:"pizza"})
+
+//practice
+//Create a file log.txt, write a message, and append a new message after 2 seconds using setTimeout.
+// const fs = require('fs')
+
+// fs.writeFileSync("log.txt", 'new file')
+
+// setTimeout(()=>{
+//    const newLine = fs.appendFileSync("log.txt", "\nNew line added")
+//    console.log("New line added to log.txt")
+// },2000)
+
+//Create a custom event userJoined, which logs: "User [name] has joined."
+// const EventEmitter = require("events")
+// const emmiter = new EventEmitter()
+
+// emmiter.on("userJoined", (name)=>{
+//     console.log(`User ${name} has joined`)
+// })
+// emmiter.emit("userJoined", "smn")
+
+//Log your OS info: platform, total memory, home directory.
+// const os = require('os')
+// console.log(os.platform())
+// console.log(os.totalmem())
+// console.log(os.homedir())
+
+
+
