@@ -135,26 +135,77 @@
 //     console.log("server is on")
 // })
 
+
 //serve fs with html 
+// const fs = require('fs')
+// const http = require('http')
+// const server = http.createServer((req, res) => {
+//     if (req.url === "/") {
+//         fs.readFile("home.html" , (err, data) => {
+//             if(err){
+//                 res.writeHead(500)
+//                 res.end("server error")
+//             }else{
+//                 res.writeHead(200, {"content-type" : "text/html"});
+//                 res.end(data)
+//             }
+//         })
+        
+//     }else{
+//         res.writeHead(404)
+//         res.end('404 error')
+//     }
+// } )
+
+// server.listen(3000, ()=>{
+//     console.log("Server running at http://localhost:3000")
+// })
+
+//practice
+//Create three pages: /, /about, /contact, each serving different HTML.
+
 const fs = require('fs')
 const http = require('http')
-const server = http.createServer((req, res) => {
-    if (req.url === "/") {
-        fs.readFile("home.html" , (err, data) => {
+
+const server = http.createServer((req, res)=>{
+    if(req.url === "/"){
+        fs.readFile("home.html", (err, data)=> {
             if(err){
                 res.writeHead(500)
                 res.end("server error")
             }else{
-                res.writeHead(200, {"content-type" : "text/html"});
+                res.writeHead(200, {"content-type" : "text/html"})
                 res.end(data)
             }
         })
-        
+       
+    }else if(req.url === "/about"){
+        fs.readFile("about.html", (err, data)=> {
+            if(err){
+                res.writeHead(500)
+                res.end("server error")
+            }else{
+                res.writeHead(200, {"content-type" : "text/html"})
+                res.end(data)
+            }
+        })
+       
+    }else if(req.url === "/contact"){
+        fs.readFile("contact.html", (err, data)=> {
+            if(err){
+                res.writeHead(500)
+                res.end("server error")
+            }else{
+                res.writeHead(200, {"content-type" : "text/html"})
+                res.end(data)
+            }
+        })
+       
     }else{
         res.writeHead(404)
         res.end('404 error')
     }
-} )
+})
 
 server.listen(3000, ()=>{
     console.log("Server running at http://localhost:3000")
